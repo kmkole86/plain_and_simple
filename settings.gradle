@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PlainAndSimple"
+include ':app'
+include ':data:data'
+include ':data:remote'
+include ':data:local'
+include ':feature:movies'
+include ':feature:screen2'
+include ':feature:screen3'
+include ':domain'
