@@ -76,7 +76,7 @@ class MoviesViewModel @Inject constructor(
 
     private fun getPage(pageOrdinal: Int) {
         viewModelScope.launch {
-            getMoviesUseCase(pageOrdinal).collect {
+            getMoviesUseCase.get(pageOrdinal).collect {
                 onAction(MoviesAction.OnNextPageResult(it))
             }
         }

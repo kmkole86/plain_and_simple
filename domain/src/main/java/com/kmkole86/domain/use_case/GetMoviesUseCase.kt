@@ -14,7 +14,7 @@ class GetMoviesUseCase(
     private val movieRepository: MovieRepository
 ) {
 
-    operator fun invoke(pageOrdinal: Int): Flow<MoviesResult> =
+    fun get(pageOrdinal: Int): Flow<MoviesResult> =
         flow<MoviesResult> {
             when (val result = movieRepository.getMovies(pageOrdinal)) {
                 is Result.Error -> emit(MoviesResult.Error)

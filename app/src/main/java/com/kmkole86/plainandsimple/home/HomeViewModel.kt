@@ -13,15 +13,16 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    val getMoviesUseCase: GetMoviesUseCase
+    private val getMoviesUseCase: GetMoviesUseCase
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState.Loading)
     val state = _state.asStateFlow()
 
     init {
+        //todo if restored state (savedStateHandle) skip check
         viewModelScope.launch {
-            getMoviesUseCase(1).collect {
+            getMoviesUseCase.get(1).collect {
                 when (it) {
                     is GetMoviesUseCase.MoviesResult.Loading -> _state.value = HomeUiState.Loading
                     else -> _state.value = HomeUiState.Success
