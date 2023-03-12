@@ -62,10 +62,14 @@ dependencies {
     implementation(project(mapOf("path" to ":domain")))
     kapt(libs.hilt.compiler)
 
+    //test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.coroutine.test)
+    testImplementation(libs.google.truth)
     androidTestImplementation(libs.espresso.core)
-
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit)
     debugImplementation(libs.androidx.compose.ui.tooling)

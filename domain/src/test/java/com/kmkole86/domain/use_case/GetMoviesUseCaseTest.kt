@@ -1,10 +1,9 @@
 package com.kmkole86.domain.use_case
 
 import com.google.common.truth.Truth.assertThat
-import com.kmkole86.domain.entity.Movie
-import com.kmkole86.domain.entity.Page
 import com.kmkole86.domain.repository.MovieRepository
 import com.kmkole86.domain.result.*
+import com.kmkole86.domain.use_case.models.createPageDummyData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.toList
@@ -73,24 +72,4 @@ class GetMoviesUseCaseTest {
         assertThat(results[0]).isInstanceOf(GetMoviesUseCase.MoviesResult.Loading::class.java)
         assertThat(results[1]).isInstanceOf(GetMoviesUseCase.MoviesResult.Error::class.java)
     }
-}
-
-private fun createPageDummyData(pageOrdinal: Int): Page {
-    return Page(
-        ordinal = pageOrdinal,
-        movies = (1..20).map { createMovieDummyData(it) },
-        hasNext = true
-    )
-}
-
-fun createMovieDummyData(id: Int): Movie {
-    return Movie(
-        id = id,
-        title = "title $id",
-        overview = "overview $id",
-        posterPath = "posterPath $id",
-        releaseDate = "n/a",
-        voteAverage = id.toFloat(),
-        voteCount = id
-    )
 }

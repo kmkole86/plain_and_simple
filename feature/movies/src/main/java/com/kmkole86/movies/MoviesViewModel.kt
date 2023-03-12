@@ -22,8 +22,7 @@ private const val LAST_PAGE_KEY = "last_page_key"
 class MoviesViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val getMoviesUseCase: GetMoviesUseCase
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _stateObservable: MutableStateFlow<MoviesState> = MutableStateFlow(
         MoviesState.Ok(
